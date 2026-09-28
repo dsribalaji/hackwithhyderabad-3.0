@@ -60,7 +60,7 @@ def reset_bank():
     os.environ["BANK_ID"] = new_bank
     agent_on = Agent(bank_id=new_bank, memory_enabled=True)
     agent_off = Agent(bank_id=new_bank, memory_enabled=False)
-    return [], "_Bank reset. Seed it again with scripts/seed_demo.py._", ""
+    return [], f"_Bank reset. Seed it again with `python scripts/seed_demo.py --bank {new_bank}`._", ""
 
 
 with gr.Blocks(title="ShopMind — the shopkeeper that never forgets") as demo:
