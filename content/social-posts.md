@@ -11,6 +11,8 @@ We built ShopMind — a shop assistant for small retailers that remembers every 
 
 The memory layer is visible, not a black box: every reply shows exactly which memories it recalled.
 
+Repo: https://github.com/dsribalaji/hackwithhyderabad-3.0
+
 #AI #BuildInPublic #OpenSource
 
 ---
@@ -26,6 +28,8 @@ That's ShopMind — our memory-powered assistant for small retailers, built on H
 
 Small shops lose customers by forgetting them. Ours never does.
 
+Repo: https://github.com/dsribalaji/hackwithhyderabad-3.0
+
 #AI #SmallBusiness #Retail
 
 ---
@@ -40,4 +44,18 @@ Self-hosted Hindsight, local embeddings, no cloud signup. The demo story: one cu
 
 Honest note: the 30 days are pre-seeded, not learned live — the demo proves recall. The live retain-then-recall turn is what proves learning, and it's the first thing we show when asked.
 
+Repo: https://github.com/dsribalaji/hackwithhyderabad-3.0
+
 #AI #MachineLearning #BuildInPublic
+
+---
+
+## Posting checklist (per the content guide)
+
+- [ ] Pick one variant per member, personalize the hook
+- [ ] Article URL goes as the FIRST comment on the post
+- [ ] Add a second comment with the Hindsight repo link:
+      "Here's Hindsight if you want to check it out: https://github.com/vectorize-io/hindsight"
+- [ ] Hashtags stay on the last line only; never use #Hackathon
+- [ ] After publishing: share the article on Reddit (r/llmdevs, r/sideproject, r/aiagents, r/aimemory) as a link post
+- [ ] Tag Code.in on LinkedIn posts and articles

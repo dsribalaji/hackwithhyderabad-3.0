@@ -13,9 +13,7 @@ entire product is memory.
 
 ## How the memory works
 
-ShopMind is built on [Hindsight](https://hindsight.vectorize.io/) by
-Vectorize, an agent-memory system. Every exchange with a customer is retained;
-every reply is grounded in recalled memories. The integration lives in one
+ShopMind is built on [Hindsight](https://hindsight.vectorize.io/) by Vectorize ([open source on GitHub](https://github.com/vectorize-io/hindsight)) — a system for [agent memory](https://vectorize.io/what-is-agent-memory), the layer that lets an agent retain and recall instead of starting every conversation from zero. Every exchange with a customer is retained; every reply is grounded in recalled memories. The integration lives in one
 module — `src/memory.py`, a `MemoryBank` class that is the only code that
 talks to Hindsight. Everything else stays idea-agnostic.
 
@@ -44,6 +42,28 @@ def respond(self, user_text: str, speaker: str = "customer") -> TurnResult:
 Three steps per turn: **recall** relevant memories, **chat** grounded in them,
 **retain** the exchange so the next turn is smarter. Flip memory off and the
 first line is skipped — the same code path produces a generic stranger.
+
+The other half of the integration is the `MemoryBank` — the only module that
+talks to Hindsight, so the rest of the codebase never imports it directly:
+
+```python
+class MemoryBank:
+    """A named, persistent memory bank backed by Hindsight."""
+
+    def remember(self, content: str) -> None:
+        self._client.retain(bank_id=self.bank_id, content=content)
+
+    def recall(self, query: str, top_k: int = 5) -> list[str]:
+        if not self.enabled:
+            return []
+        results = self._client.recall(bank_id=self.bank_id, query=query)
+        return [self._text(r) for r in self._as_list(results)[:top_k]]
+```
+
+`remember()` maps to Hindsight's `retain`; `recall()` to Hindsight's recall
+with TEMPR search. The embedded daemon is shared across every Python process
+on the machine — that is why a fact retained by one script is recallable from
+another, and that cross-process persistence is the entire demo.
 
 ## Before and after: "Hi, do you have atta?"
 
