@@ -54,7 +54,7 @@ before/after demo works with zero signup. To use a real model, set in `.env`:
 ```
 LLM_BASE_URL=https://api.groq.com/openai/v1
 LLM_API_KEY=<your key>
-LLM_MODEL=qwen/qwen3-32b
+LLM_MODEL=qwen/qwen3.8-27b
 ```
 
 Any OpenAI-compatible endpoint works (Groq, OpenAI, Ollama, LiteLLM...).
@@ -63,7 +63,10 @@ With the same key, also upgrade Hindsight's own extraction:
 ```
 HINDSIGHT_LLM_PROVIDER=groq
 HINDSIGHT_LLM_API_KEY=<your key>
-HINDSIGHT_LLM_MODEL=qwen/qwen3-32b
+HINDSIGHT_LLM_MODEL=qwen/qwen3.8-27b
+# Groq free tier also needs (see .env.example):
+# HINDSIGHT_API_LLM_GROQ_SERVICE_TIER=on_demand
+# HINDSIGHT_API_RETAIN_MAX_COMPLETION_TOKENS=16000
 ```
 
 then restart the daemon so it picks up the provider.
