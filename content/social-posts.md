@@ -56,6 +56,6 @@ Repo: https://github.com/dsribalaji/hackwithhyderabad-3.0
 - [ ] Article URL goes as the FIRST comment on the post
 - [ ] Add a second comment with the Hindsight repo link:
       "Here's Hindsight if you want to check it out: https://github.com/vectorize-io/hindsight"
-- [ ] Hashtags stay on the last line only; never use #Hackathon
+- [ ] Hashtags stay on the last line only; no event-related tags
 - [ ] After publishing: share the article on Reddit (r/llmdevs, r/sideproject, r/aiagents, r/aimemory) as a link post
 - [ ] Tag Code.in on LinkedIn posts and articles
