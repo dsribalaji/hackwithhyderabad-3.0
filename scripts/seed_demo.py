@@ -10,11 +10,12 @@ Scenarios are just seed data — swap in your own for a different project idea.
 """
 
 import argparse
+import os
 import sys
 
-sys.path.insert(0, "src")
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from memory import MemoryBank  # noqa: E402
+from src.memory import MemoryBank  # noqa: E402
 
 SHOPMIND_HISTORY = [
     # (day label, speaker, text)

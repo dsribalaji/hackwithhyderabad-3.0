@@ -53,6 +53,15 @@ LLM_MODEL=qwen/qwen3-32b
 ```
 
 Any OpenAI-compatible endpoint works (Groq, OpenAI, Ollama, LiteLLM...).
+With the same key, also upgrade Hindsight's own extraction:
+
+```
+HINDSIGHT_LLM_PROVIDER=groq
+HINDSIGHT_LLM_API_KEY=<your key>
+HINDSIGHT_LLM_MODEL=qwen/qwen3-32b
+```
+
+then restart the daemon so it picks up the provider.
 
 ## How it works
 
@@ -76,6 +85,7 @@ retain() ── the exchange is stored ──► the NEXT turn is smarter
 - `src/config.py` — everything via env vars.
 - `scripts/spike.py` — minimal retain/recall + cross-process persistence proof.
 - `scripts/seed_demo.py` — seeds the 30-day learning-curve story.
+- `scripts/e2e_test.py` — same question with memory OFF vs ON; asserts the contrast.
 - `app.py` — Gradio demo UI with memory ON/OFF toggle + memory inspector.
 
 ### Hindsight, self-hosted, zero signup
@@ -88,11 +98,29 @@ to manage. Defaults are fully local:
 |---|---|---|
 | Database | embedded pg0 (PostgreSQL) | none |
 | Embeddings | local `bge-small-en-v1.5` | none |
-| Reranker | local | none |
-| LLM (fact extraction) | `llamacpp` — auto-downloads a small GGUF on first run | none (after download) |
+| Reranker | local cross-encoder | none |
+| LLM (fact extraction) | `none` — recall works, extraction degraded | none |
 
-Point `HINDSIGHT_MODE=server` + `HINDSIGHT_URL` at a hosted Hindsight if you
-prefer, and set `HINDSIGHT_LLM_PROVIDER` to `groq`/`openai`/etc. with a key.
+Set `HINDSIGHT_LLM_PROVIDER=groq` (+ key) for full fact extraction and
+`reflect`; `llamacpp` for a fully local LLM (auto-downloads a ~3.5GB GGUF
+on first run; needs `llama-cpp-python` installed).
+
+> **Root limitation.** The embedded PostgreSQL refuses to `initdb` as root,
+> and this VM runs as root. All runtime scripts must therefore run as the
+> non-root user `hwh` (created for this project). Use the wrapper:
+>
+> ```
+> su -m -s /bin/bash hwh -- /home/hwh/bin/run-as-hwh.sh scripts/spike.py retain
+> ```
+>
+> The live runtime copy lives at `/home/hwh/hwh3` (the `hwh` user cannot
+> traverse `/home/hatch`, so the repo checkout at `~/workspace/hwh3` is the
+> source of truth — sync it over after changes). The daemon stores its data
+> under `/home/hwh/.hindsight` and `/home/hwh/.pg0`.
+>
+> When the Groq key arrives: set `LLM_API_KEY` (agent's LLM) and
+> `HINDSIGHT_LLM_PROVIDER=groq` + `HINDSIGHT_LLM_API_KEY` (memory extraction)
+> in `.env`, then restart the daemon.
 
 ## Project ideas
 

@@ -3,6 +3,26 @@
 import os
 
 
+def _sanitize_no_proxy() -> None:
+    """Sandbox quirk: NO_PROXY ships bare IPv6 literals (e.g. ``::1``) which
+    break httpx's proxy parsing (``httpx.InvalidURL``) on import inside
+    gradio/huggingface_hub. Keep only entries httpx can parse; localhost
+    bypasses the proxy either way."""
+    for var in ("no_proxy", "NO_PROXY"):
+        val = os.environ.get(var)
+        if not val:
+            continue
+        keep = [
+            p.strip()
+            for p in val.split(",")
+            if p.strip() and ("." in p or p.strip() == "localhost")
+        ]
+        os.environ[var] = ",".join(keep) or "localhost,127.0.0.1"
+
+
+_sanitize_no_proxy()
+
+
 def get(key: str, default: str = "") -> str:
     return os.environ.get(key, default)
 

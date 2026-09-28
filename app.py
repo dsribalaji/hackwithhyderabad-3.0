@@ -13,12 +13,13 @@ Then open the printed URL. Use scripts/seed_demo.py first for the full story.
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import src.config  # noqa: F401 — must come first: sanitizes proxy env for httpx
 import gradio as gr  # noqa: E402
 
-from agent import Agent  # noqa: E402
-from memory import MemoryBank  # noqa: E402
+from src.agent import Agent  # noqa: E402
+from src.memory import MemoryBank  # noqa: E402  (imported for side-effect: env sanitizing)
 
 BANK_ID = os.environ.get("BANK_ID", "shopmind-demo")
 

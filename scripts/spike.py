@@ -9,13 +9,14 @@ across sessions via the shared embedded daemon. No API keys needed:
 embeddings are local, and the LLM provider defaults to llamacpp (local GGUF).
 """
 
+import os
 import sys
 import time
 import uuid
 
-sys.path.insert(0, "src")
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from memory import MemoryBank  # noqa: E402
+from src.memory import MemoryBank  # noqa: E402
 
 BANK = "spike-bank"
 MARKER = uuid.uuid4().hex[:8]
