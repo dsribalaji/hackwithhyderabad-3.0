@@ -1,12 +1,17 @@
-# Hindsight Agent — Hack With Hyderabad 3.0
+# ShopMind — the shopkeeper that never forgets
 
-An AI agent that **learns using Hindsight** (Vectorize's agent-memory system).
+A WhatsApp-style assistant for small retailers that **remembers every
+customer**, built on **Hindsight** (Vectorize's agent-memory system).
 Every interaction is retained; every reply is grounded in recalled memories.
 The demo makes the learning curve visible: flip memory OFF and the agent is
 generic — flip it ON and the same question gets a personalized answer built
 from weeks of history.
 
+**Who it serves:** local retailers, kirana/electronics/apparel shops, and D2C
+sellers on WhatsApp — starting with **Lakshmi's provisions store**.
+
 Built for **Hack With Hyderabad 3.0** — *"AI Agents That Learn Using Hindsight"*.
+⭐ **LOCKED as our entry — selected 2026-09-28** (see [IDEAS.md](IDEAS.md)).
 
 ## The 60-second demo
 
@@ -124,9 +129,12 @@ on first run; needs `llama-cpp-python` installed).
 
 ## Project ideas
 
-See [IDEAS.md](IDEAS.md) — three concrete proposals (ShopMind recommended):
-a WhatsApp shopkeeper that never forgets, a sales assistant that remembers
-every objection, and an on-call copilot with institutional memory.
+See [IDEAS.md](IDEAS.md) for the full record.
+
+- ⭐ **ShopMind — LOCKED (selected 2026-09-28):** the shopkeeper that never
+  forgets — this build.
+- **RepRecall** (sales assistant that remembers every objection) — not pursued.
+- **IncidentMind** (on-call copilot with institutional memory) — not pursued.
 
 ## Rules of the road
 

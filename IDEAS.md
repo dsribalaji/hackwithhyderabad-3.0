@@ -1,5 +1,9 @@
 # Project Ideas — Hack With Hyderabad 3.0
 
+> **Status:** ⭐ **ShopMind — LOCKED (selected 2026-09-28).**
+> RepRecall and IncidentMind are **not pursued**. All three descriptions are
+> kept below for the record.
+
 Theme: **"AI Agents That Learn Using Hindsight"** — every team must build with
 Hindsight (persistent agent memory). Memory is 25% of the judging: the demo must
 SHOW the agent visibly improving via memory (interaction 1 generic → interaction
@@ -7,7 +11,7 @@ SHOW the agent visibly improving via memory (interaction 1 generic → interacti
 
 ---
 
-## ⭐ RECOMMENDED: ShopMind — the shopkeeper that never forgets
+## ⭐ LOCKED (selected 2026-09-28): ShopMind — the shopkeeper that never forgets
 
 **The real business problem.** Small retailers run their business on WhatsApp.
 The same questions arrive daily ("do you have X?", "what time do you close?"),
@@ -40,7 +44,7 @@ chatbot. That's memory."
 
 ---
 
-## Idea 2: RepRecall — the sales assistant that remembers every objection
+## Idea 2: RepRecall — the sales assistant that remembers every objection *(not pursued)*
 
 **The real business problem.** Sales reps lose deals because context dies between
 touches. Objections raised on call 1 ("budget frozen till Q2", "we use
@@ -65,7 +69,7 @@ never do this."
 
 ---
 
-## Idea 3: IncidentMind — on-call copilot with institutional memory
+## Idea 3: IncidentMind — on-call copilot with institutional memory *(not pursued)*
 
 **The real business problem.** On-call engineers re-solve the same incidents.
 Runbooks go stale, postmortems rot in docs nobody reads, and the engineer who

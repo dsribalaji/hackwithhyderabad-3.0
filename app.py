@@ -1,4 +1,4 @@
-"""Gradio demo UI.
+"""Gradio demo UI — ShopMind, the shopkeeper that never forgets.
 
 The whole pitch in one screen:
   - chat with the agent
@@ -63,13 +63,14 @@ def reset_bank():
     return [], "_Bank reset. Seed it again with scripts/seed_demo.py._", ""
 
 
-with gr.Blocks(title="Hindsight Agent Demo") as demo:
+with gr.Blocks(title="ShopMind — the shopkeeper that never forgets") as demo:
     gr.Markdown(
-        """# Agent with a memory 🧠
-        Built on **Hindsight** — the agent retains every interaction and recalls
-        what matters. Flip the **Memory** switch to see the before/after judges score:
-        the *same* question gets a generic answer with memory OFF and a
-        personalized one with memory ON."""
+        """# ShopMind — the shopkeeper that never forgets 🛒
+        Meet **Lakshmi**: her provisions store runs on WhatsApp. On Day 1 the
+        assistant is polite but generic — by Day 30 it remembers her usual 5kg
+        atta, her home-delivery preference, and the mixer grinder she asked
+        about when it was out of stock. Flip the **Memory** switch and ask the
+        *same* question: OFF gets you a stranger, ON gets you a regular."""
     )
     with gr.Row():
         memory_toggle = gr.Checkbox(label="Memory ON", value=True)
